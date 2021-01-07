@@ -57,7 +57,9 @@ class Game extends React.Component {
         const current = history[history.length - 1];
         const squares = current.squares.slice();
 
-        if (calculateWinner(squares) || squares[i]) return;
+        if (calculateWinner(squares) || squares[i]) {
+            return;
+        }
 
         squares[i] = this.state.xIsNext ? 'X' : 'O';
         this.setState({
@@ -82,7 +84,9 @@ class Game extends React.Component {
         const winner = calculateWinner(current.squares);
 
         const moves = history.map((step, move) => {
-            const desc = move ? move : 'Restart Game';
+            const desc = move ?
+                'VOLTAR PARA A JOGADA #' + move :
+                'RESTART GAME';
 
             return (
                 <li key={move}>
